@@ -140,6 +140,43 @@ model.summary()
 ```
 ![6](https://user-images.githubusercontent.com/37185221/222915567-d5c2deb0-70a6-4482-9bef-7a472cc30a15.PNG)
 
-Compile model using 
+Compile model using sparse_categorical_crossentropy (calculates how often predictions match integer labels) and Adam optimizer.
 
+Fit model for 10 epochs and 100 batch size.
+```ruby
+model.compile(loss = 'sparse_categorical_crossentropy',optimizer = 'adam', metrics = ['accuracy'])
+history = model.fit(train_imagesNN,train_labelsNN,epochs = 10, validation_data = (test_imagesNN, test_labelsNN), batch_size=100)
+```
+ ![7](https://user-images.githubusercontent.com/37185221/222963225-39773651-2bf2-4313-92c8-a52c30c4a122.PNG)
+
+Model's **accuracy = 0.7892** and **validation accuracy = 0.7409** .
+
+Create accuracy and loss plot.
+```ruby
+loss_train = history.history['accuracy']
+loss_val = history.history['val_accuracy']
+epochs = range(1,11)
+plt.plot(epochs, loss_train, 'g', label='Training accuracy')
+plt.plot(epochs, loss_val, 'b', label='validation accuracy')
+plt.title('Training and Validation accuracy')
+plt.xlabel('Epochs')
+plt.ylabel('Accuracy')
+plt.legend()
+plt.show()
+```
+![8](https://user-images.githubusercontent.com/37185221/222963399-73bdfdb2-1d79-4892-bfd9-a649d15524af.PNG)
+
+```ruby
+loss_train = history.history['loss']
+loss_val = history.history['val_loss']
+epochs = range(1,11)
+plt.plot(epochs, loss_train, 'g', label='Training Loss')
+plt.plot(epochs, loss_val, 'b', label='Validation Loss')
+plt.title('Training and Validation Loss')
+plt.xlabel('Epochs')
+plt.ylabel('Loss')
+plt.legend()
+plt.show()
+```
+![9](https://user-images.githubusercontent.com/37185221/222963843-7313e38c-60e2-49ff-867a-0d6a3acc7bd3.PNG)
 
