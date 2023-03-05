@@ -4,7 +4,7 @@ Image Classification with tensorflow keras using Neural Networks.
 ## Load-Edit Dataset
 Download "The Street View House Numbers (SVHN)" in Local Drive > User and load it. You can find it here : "http://ufldl.stanford.edu/housenumbers/".
 
-```
+```ruby
 testdir = r"C:\Users\user\test_32x32"
 test_data = scipy.io.loadmat(testdir)
 test_labels = test_data['y']
@@ -22,7 +22,7 @@ Shapes: <br />
 **train_labels**: (73257, 1)
 
 ### Edit data
-```
+```ruby
 print(test_labels[0:3])
 ```
 ![1](https://user-images.githubusercontent.com/37185221/222908180-f59cc8c8-631c-48e6-b9fa-99b300312090.PNG)
@@ -38,7 +38,7 @@ print(test_labels[0:3])
 ![2](https://user-images.githubusercontent.com/37185221/222910557-d63bba12-0f1c-430d-9b42-5d99b0e195c4.PNG)
 
 Do the same for train_labels.
-```
+```ruby
 train_labels = le.fit_transform(train_labels.ravel())
 train_labels = train_labels + 1
 ```
@@ -61,7 +61,7 @@ test_imagesKNN = np.reshape(test_imagesKNN, (26032,3072))
 ![3](https://user-images.githubusercontent.com/37185221/222913458-c6612e02-bcca-47b0-a057-90df7edb17fe.PNG)
 
 Now i have a huge image dataset of 73257 train images and 26032 test images. To decrise execution time i will choose a dataset of 1000 samples.
-```
+```ruby
 test_imagesKNNc = test_imagesKNN[0:1000,:]
 train_imagesKNNc = train_imagesKNN[0:1000, :]  
 test_labelsKNNc = test_labelsKNN[0:1000]
@@ -106,7 +106,7 @@ def images3d(data):
     return np.asarray(images) #from list to numpy array
 ```
 Normalization, data shape before and after format.
-```
+```ruby
 train_imagesNN, test_imagesNN = train_images / 255, test_images / 255 
 train_labelsNN, test_labelsNN = train_labels, test_labels
 
